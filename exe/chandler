@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "chandler/cli"
+Chandler::CLI.new.run
