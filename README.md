@@ -101,7 +101,7 @@ task "release:rubygem_push" => "chandler:push"
 
 That's it! Now when you run `rake release`, your GitHub release notes will be updated automatically based on your CHANGELOG entries.
 
-And yes, chandler uses itself to automatically push its own [release notes] to GitHub! Check out the [Rakefile](Rakefile).
+And yes, chandler uses itself to automatically push its own [release notes][release-notes] to GitHub! Check out the [Rakefile](Rakefile).
 
 [Sibbell]: http://sibbell.com
 [access-token]: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
