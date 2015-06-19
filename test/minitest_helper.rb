@@ -1,4 +1,10 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+chandler_lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(chandler_lib)
+
+if ENV["TRAVIS"]
+  require "coveralls"
+  Coveralls.wear!
+end
 
 require "minitest/autorun"
 
