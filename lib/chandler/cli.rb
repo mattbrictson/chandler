@@ -22,6 +22,8 @@ module Chandler
       command.call
     end
 
+    private
+
     def command # rubocop:disable Metrics/MethodLength
       case (command = args.shift)
       when "push"
@@ -36,8 +38,6 @@ module Chandler
         exit(1)
       end
     end
-
-    private
 
     def push
       Chandler::Commands::Push.new(
