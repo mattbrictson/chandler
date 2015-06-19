@@ -11,16 +11,21 @@ Have a feature idea, bug fix, or refactoring suggestion? Contributions are welco
 
 ## Coding guidelines
 
-* This project has a coding style enforced by [rubocop][]. Use hash rockets and double-quoted strings, and otherwise try to follow the [Ruby style guide][style].
+* This project has a coding style enforced by [RuboCop][]. Use hash rockets and double-quoted strings, and otherwise try to follow the [Ruby style guide][style].
 * Writing tests is strongly encouraged! This project uses Minitest.
 
 ## Getting started
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment. To run your checked-out version of chandler, use `bundle exec chandler`.
+After checking out the repo, run `bin/setup` to install dependencies.
 
-To execute chandler's tests and rubocop checks, run `rake`.
+chandler offers the following development and testing commands:
+
+* `bin/console` loads your working copy of chandler into an irb session
+* `bundle exec chandler` runs your working copy of the chandler executable
+* `rake` executes all of chandler's tests and RuboCop checks
+* `guard` monitors the filesystem and automatically runs tests as you work
 
 
 [Issues]: https://github.com/mattbrictson/chandler/issues
-[rubocop]: https://github.com/bbatsov/rubocop
+[RuboCop]: https://github.com/bbatsov/rubocop
 [style]: https://github.com/bbatsov/ruby-style-guide
