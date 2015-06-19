@@ -1,13 +1,8 @@
 require "minitest_helper"
-require "stringio"
 require "chandler/logger"
 
 class Chandler::LoggerTest < Minitest::Test
-  class ColorfulStringIO < StringIO
-    def tty?
-      true
-    end
-  end
+  include LoggerMocks
 
   def test_color_is_disabled_for_dumb_term
     ENV.stubs(:[]).returns(nil)
@@ -125,27 +120,5 @@ class Chandler::LoggerTest < Minitest::Test
       stdout
     )
     assert_empty(stderr)
-  end
-
-  private
-
-  def stdout
-    @stdout.string
-  end
-
-  def stderr
-    @stderr.string
-  end
-
-  def new_logger
-    @stderr = StringIO.new
-    @stdout = StringIO.new
-    Chandler::Logger.new(:stderr => @stderr, :stdout => @stdout)
-  end
-
-  def new_logger_with_color
-    @stderr = ColorfulStringIO.new
-    @stdout = ColorfulStringIO.new
-    Chandler::Logger.new(:stderr => @stderr, :stdout => @stdout)
   end
 end
