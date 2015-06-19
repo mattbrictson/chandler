@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/chandler.svg)](http://badge.fury.io/rb/chandler)
 [![Build Status](https://travis-ci.org/mattbrictson/chandler.svg?branch=master)](https://travis-ci.org/mattbrictson/chandler)
+[![Code Climate](https://codeclimate.com/github/mattbrictson/chandler/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/chandler)
+[![Coverage Status](https://coveralls.io/repos/mattbrictson/chandler/badge.svg?branch=master)](https://coveralls.io/r/mattbrictson/chandler?branch=master)
 
 **chandler syncs your CHANGELOG entries to GitHub's release notes so you don't have to enter release notes manually.** For Ruby projects, you can even add chandler to your gem's Rakefile to make this an automatic part of your release process!
 
