@@ -2,6 +2,8 @@ require "minitest_helper"
 require "chandler/cli/parser"
 
 class Chandler::CLI::ParserTest < Minitest::Test
+  include LoggerMocks
+
   def test_usage
     parser = parse_arguments
     assert_match(/^Usage: chandler/, parser.usage)
@@ -56,9 +58,22 @@ class Chandler::CLI::ParserTest < Minitest::Test
     assert_equal("../test/changes.md", config.changelog_path)
   end
 
+  def test_prints_version_and_exits
+    exit = assert_raises(SystemExit) { parse_arguments("--version") }
+    assert_equal(0, exit.status)
+    assert_equal("chandler version #{Chandler::VERSION}\n", stdout)
+  end
+
+  def test_prints_usage_and_exits
+    exit = assert_raises(SystemExit) { parse_arguments("--help") }
+    assert_equal(0, exit.status)
+  end
+
   private
 
   def parse_arguments(*args)
-    Chandler::CLI::Parser.new(args)
+    config = Chandler::Configuration.new
+    config.logger = new_logger
+    Chandler::CLI::Parser.new(args, config)
   end
 end

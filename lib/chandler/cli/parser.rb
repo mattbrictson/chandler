@@ -1,10 +1,12 @@
 require "chandler/configuration"
+require "chandler/logging"
 require "chandler/version"
 require "optparse"
 
 module Chandler
   class CLI
     class Parser
+      include Logging
       attr_reader :args, :config
 
       def initialize(args, config=Chandler::Configuration.new)
@@ -59,12 +61,12 @@ module Chandler
           end
 
           opts.on("-h", "--help", "Show this help message") do
-            puts(opts)
+            info(opts.to_s)
             exit
           end
 
           opts.on("-v", "--version", "Print the chandler version number") do
-            puts("chandler version #{Chandler::VERSION}")
+            info("chandler version #{Chandler::VERSION}")
             exit
           end
         end
