@@ -13,21 +13,16 @@ class Chandler::CLITest < Minitest::Test
   end
 
   def test_missing_command_causes_exit
-    Mocha::Configuration.allow(:stubbing_non_public_method) do
-      @cli.expects(:exit).with(1).raises("exited")
-    end
-    assert_raises("exited") { @cli.run }
+    error = assert_raises(SystemExit) { @cli.run }
+    assert_equal(1, error.status)
     assert_match("Please specify a command", stderr)
     assert_match("usage", stdout)
   end
 
   def test_unrecognized_command_causes_exit
-    Mocha::Configuration.allow(:stubbing_non_public_method) do
-      @cli.expects(:exit).with(1).raises("exited")
-    end
-
     @args << "blergh"
-    assert_raises("exited") { @cli.run }
+    error = assert_raises(SystemExit) { @cli.run }
+    assert_equal(1, error.status)
     assert_match("Unrecognized command: blergh", stderr)
     assert_match("usage", stdout)
   end
