@@ -35,6 +35,15 @@ class Chandler::GitTest < Minitest::Test
     assert_equal("git@example.com:username/origin", subject.origin_remote)
   end
 
+  def test_error_includes_descriptive_message
+    error = assert_raises(Chandler::Git::Error) do
+      @git_path = "non-existent-path"
+      subject.origin_remote
+    end
+    assert_match("Failed to execute: git", error.message)
+    assert_match("Not a git repository: 'non-existent-path'", error.message)
+  end
+
   private
 
   def subject
