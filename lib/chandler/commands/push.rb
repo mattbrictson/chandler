@@ -12,12 +12,10 @@ module Chandler
       using Chandler::Refinements::Color
       using Chandler::Refinements::VersionFormat
 
-      attr_reader :github, :changelog, :tags, :config
+      attr_reader :tags, :config
 
       def initialize(tags:, config:)
         @tags = tags
-        @github = config.github
-        @changelog = config.changelog
         @config = config
       end
 
@@ -32,6 +30,14 @@ module Chandler
       end
 
       private
+
+      def github
+        config.github
+      end
+
+      def changelog
+        config.changelog
+      end
 
       def benchmarking_each_tag
         width = tags.map(&:length).max
