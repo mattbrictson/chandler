@@ -13,4 +13,4 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/airbrussh/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.1.0...HEAD
