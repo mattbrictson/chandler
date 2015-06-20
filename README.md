@@ -75,7 +75,7 @@ Other command-line options:
 
 ## Rakefile integration
 
-If you maintain a Ruby gem and use Bundler's gem tasks (i.e. `rake release`) to publish your gem, then you can use chandler to automate update your GitHub release notes.
+If you maintain a Ruby gem and use Bundler's gem tasks (i.e. `rake release`) to publish your gem, then you can use chandler to update your GitHub release notes automatically.
 
 ### 1. Update the gemspec
 
