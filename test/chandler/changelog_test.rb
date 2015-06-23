@@ -9,6 +9,16 @@ class Chandler::ChangelogTest < Minitest::Test
     end
   end
 
+  def test_fetch_actionview_versions
+    changelog = new_changelog("actionview.md")
+
+    assert_match("`translate` should handle `rai", changelog.fetch("v4.1.12"))
+    assert_match("No changes.", changelog.fetch("v4.1.11"))
+    assert_match("Local variable in a partial is", changelog.fetch("v4.1.10"))
+    assert_match("Added an explicit error message", changelog.fetch("v4.1.9"))
+    assert_match("Update `select_tag` to work", changelog.fetch("v4.1.8"))
+  end
+
   def test_fetch_airbrussh_versions
     changelog = new_changelog("airbrussh.md")
 
