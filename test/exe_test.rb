@@ -1,5 +1,5 @@
 require "minitest_helper"
-require "english"
+require "English"
 
 class ExeTest < Minitest::Test
   def test_chandler_is_executable_and_exits_with_success
