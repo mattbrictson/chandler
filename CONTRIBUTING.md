@@ -23,7 +23,11 @@ chandler offers the following development and testing commands:
 * `bin/console` loads your working copy of chandler into an irb session
 * `bundle exec chandler` runs your working copy of the chandler executable
 * `rake` executes all of chandler's tests and RuboCop checks
-* `guard` monitors the filesystem and automatically runs tests as you work
+
+A Guardfile is also present, so if you'd like to use Guard to do a TDD workflow, then:
+
+1. Run `bundle install --with guard` to get the optional guard dependencies
+2. Run `guard` to monitor the filesystem and automatically run tests as you work
 
 
 [Issues]: https://github.com/mattbrictson/chandler/issues

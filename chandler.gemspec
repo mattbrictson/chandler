@@ -25,13 +25,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "coveralls"
-  spec.add_development_dependency "guard", ">= 2.2.2"
-  spec.add_development_dependency "guard-minitest"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rb-fsevent"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "minitest-reporters"
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "rubocop"
-  spec.add_development_dependency "terminal-notifier-guard"
 end
