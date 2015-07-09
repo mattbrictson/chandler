@@ -1,4 +1,5 @@
 require "minitest_helper"
+require "English"
 require "fileutils"
 require "tempfile"
 require "chandler/git"
@@ -64,6 +65,7 @@ class Chandler::GitTest < Minitest::Test
   end
 
   def git(command)
-    system("git #{command} > /dev/null") || fail
+    `git #{command}`
+    fail unless $CHILD_STATUS.success?
   end
 end
