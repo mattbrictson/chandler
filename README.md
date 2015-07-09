@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/chandler.svg)](http://badge.fury.io/rb/chandler)
 [![Build Status](https://travis-ci.org/mattbrictson/chandler.svg?branch=master)](https://travis-ci.org/mattbrictson/chandler)
+[![Build status](https://ci.appveyor.com/api/projects/status/qmmk5ra8mom6503i/branch/master?svg=true)](https://ci.appveyor.com/project/mattbrictson/chandler/branch/master)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/chandler/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/chandler)
 [![Coverage Status](https://coveralls.io/repos/mattbrictson/chandler/badge.svg?branch=master)](https://coveralls.io/r/mattbrictson/chandler?branch=master)
 
