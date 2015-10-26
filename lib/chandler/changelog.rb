@@ -92,7 +92,7 @@ module Chandler
     end
 
     def text
-      @text ||= IO.read(path)
+      @text ||= IO.read(path, :encoding => "UTF-8")
     end
   end
 end
