@@ -10,11 +10,11 @@ module Chandler
     NoMatchingVersion = Class.new(StandardError)
 
     HEADING_PATTERNS = [
-      /^##\s+.*\n/,  # Markdown "atx" style
-      /^###\s+.*\n/,
-      /^==\s+.*\n/,  # Rdoc style
-      /^===\s+.*\n/,
-      /^\S.*\n-+\n/  # Markdown "Setext" style
+      /^##[[:space:]]+.*\n/,  # Markdown "atx" style
+      /^###[[:space:]]+.*\n/,
+      /^==[[:space:]]+.*\n/,  # Rdoc style
+      /^===[[:space:]]+.*\n/,
+      /^\S.*\n-+\n/           # Markdown "Setext" style
     ].freeze
 
     attr_reader :path
@@ -64,7 +64,8 @@ module Chandler
     # rubocop:disable Style/SymbolProc
     def versions_at_headings(heading_re)
       sections(heading_re).each_with_object({}) do |(heading, text), versions|
-        tokens = heading.gsub(/[\[\]\(\)`]/, " ").split.map(&:strip)
+        tokens = heading.gsub(/[\[\]\(\)`]/, " ").split(/[[:space:]]/)
+        tokens = tokens.map(&:strip)
         version = tokens.find { |t| t.version? }
         versions[version.version_number] = text if version
       end
@@ -91,9 +92,7 @@ module Chandler
     end
 
     def text
-      # Replace unicode non-breaking space with regular space, to prevent
-      # regexps from failing.
-      @text ||= IO.read(path).tr(" ", " ")
+      @text ||= IO.read(path)
     end
   end
 end
