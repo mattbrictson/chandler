@@ -8,6 +8,10 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 
 * Your contribution here!
 
+## [0.1.2][] (2015-10-26)
+
+* Fix Windows test failures introduced in 0.1.1
+
 ## [0.1.1][] (2015-10-26)
 
 * Work around parsing issues caused by non-breaking spaces in change logs (e.g. SSHKit)
@@ -17,5 +21,6 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/mattbrictson/chandler/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mattbrictson/chandler/compare/v0.1.0...v0.1.1
