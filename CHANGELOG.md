@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased]
 
 * Your contribution here!
+* Work around parsing issues caused by non-breaking spaces in change logs (e.g. SSHKit)
 
 ## 0.1.0 (2015-06-19)
 

@@ -91,7 +91,9 @@ module Chandler
     end
 
     def text
-      @text ||= IO.read(path)
+      # Replace unicode non-breaking space with regular space, to prevent
+      # regexps from failing.
+      @text ||= IO.read(path).tr(" ", " ")
     end
   end
 end

@@ -117,6 +117,13 @@ class Chandler::ChangelogTest < Minitest::Test
     assert_match("Use Parser functionality rather", changelog.fetch("v0.29.1"))
   end
 
+  def test_fetch_sshkit_versions
+    changelog = new_changelog("sshkit.md")
+
+    assert_match("Fix a regression in 1.7.0", changelog.fetch("v1.7.1"))
+    assert_match("Update Vagrantfile to use", changelog.fetch("v1.7.0"))
+  end
+
   def test_fetch_twitter_versions
     changelog = new_changelog("twitter.md")
 
