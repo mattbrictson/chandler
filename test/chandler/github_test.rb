@@ -63,7 +63,7 @@ class Chandler::GitHubTest < Minitest::Test
 
     @octokit.expects(:release_for_tag).with("repo", tag).returns(release)
     @octokit.expects(:update_release)
-      .with("url", :name => title, :body => desc)
+            .with("url", :name => title, :body => desc)
     @octokit.expects(:create_release).never
 
     @github.create_or_update_release(
@@ -79,11 +79,11 @@ class Chandler::GitHubTest < Minitest::Test
     desc = "desc"
 
     @octokit.expects(:release_for_tag)
-      .with("repo", tag)
-      .raises(Octokit::NotFound)
+            .with("repo", tag)
+            .raises(Octokit::NotFound)
 
     @octokit.expects(:create_release)
-      .with("repo", tag, :name => title, :body => desc)
+            .with("repo", tag, :name => title, :body => desc)
 
     @octokit.expects(:update_release).never
 
@@ -103,7 +103,7 @@ class Chandler::GitHubTest < Minitest::Test
     @octokit.expects(:release_for_tag).with("repo", tag).returns(release)
 
     @octokit.expects(:create_release)
-      .with("repo", tag, :name => title, :body => desc)
+            .with("repo", tag, :name => title, :body => desc)
 
     @octokit.expects(:update_release).never
 

@@ -23,10 +23,12 @@ class Chandler::Commands::PushTest < Minitest::Test
   end
 
   def test_github_is_used_to_create_or_update_releases
-    @github.expects(:create_or_update_release)
+    @github
+      .expects(:create_or_update_release)
       .with(:tag => "v1", :title => "1", :description => "notes")
 
-    @github.expects(:create_or_update_release)
+    @github
+      .expects(:create_or_update_release)
       .with(:tag => "v2", :title => "2", :description => "notes")
 
     push = Chandler::Commands::Push.new(:tags => %w(v1 v2), :config => @config)

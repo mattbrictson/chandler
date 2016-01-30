@@ -17,7 +17,8 @@ class Chandler::TasksTest < Minitest::Test
     config = Chandler::Tasks.config
     push = Chandler::Commands::Push.new(:tags => [], :config => nil)
 
-    Chandler::Commands::Push.expects(:new)
+    Chandler::Commands::Push
+      .expects(:new)
       .with(:tags => ["v1.0.2"], :config => config)
       .returns(push)
 
