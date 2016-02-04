@@ -29,7 +29,7 @@ class Chandler::CLITest < Minitest::Test
 
   def test_push_is_invoked_for_all_git_tags_by_default
     @args << "push"
-    @config.git.stubs(:version_tags => %w(v1.0.0 v1.0.1))
+    @config.git.stubs(:tagged_versions => %w(v1.0.0 v1.0.1))
 
     Chandler::Commands::Push
       .expects(:new)

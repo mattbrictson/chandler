@@ -12,6 +12,8 @@
 
 chandler scans your git repository for version tags (e.g. `v1.0.2`), parses out the corresponding release notes for those tags from your CHANGELOG, and uploads those notes to the GitHub releases area via the GitHub API.
 
+Chandler makes reasonable assumptions as to the name of your CHANGELOG file, your project's GitHub repository URL, and the naming convention of your Git version tags. These can all be overridden with command line options.
+
 ### Why go through the trouble?
 
 GitHub's releases feature is a nice UI for browsing the history of your project and downloading snapshots of each version. It is also structured data that can be queried via GitHub's API, making it a available for third-party integrations. For example, [Sibbell][] can automatically send the release notes out to interested parties whenever you publish a new version.
@@ -72,6 +74,7 @@ Other command-line options:
 * `--git=/path/to/project/.git` – location of the local git repository (defaults to `.git`)
 * `--github=username/repo` – GitHub repository to upload to (if unspecified, chandler will guess based on your git remotes)
 * `--changelog=History.md` – location of the CHANGELOG (defaults to `CHANGELOG.md`)
+* `--tag-prefix=myapp-` – specify Git version tags are in the format `myapp-1.0.0` instead of `1.0.0`
 
 
 ## Rakefile integration

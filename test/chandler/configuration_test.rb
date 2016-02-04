@@ -14,11 +14,21 @@ class Chandler::ConfigurationTest < Minitest::Test
     refute(@config.dry_run?)
   end
 
-  def test_git
+  def test_default_git
     @config.git_path = "../test/.git"
     git = @config.git
     assert_instance_of(Chandler::Git, git)
     assert_equal("../test/.git", git.path)
+    assert_equal(:itself, git.tag_mapper)
+  end
+
+  def test_prefixed_git
+    @config.git_path = "../test/.git"
+    @config.tag_prefix = "myapp-"
+    mapper = @config.git.tag_mapper
+    assert_nil(mapper.call("1.0.1"))
+    assert_nil(mapper.call("whatever-2.5.2"))
+    assert_equal("3.1.9", mapper.call("myapp-3.1.9"))
   end
 
   def test_explict_github_repository
