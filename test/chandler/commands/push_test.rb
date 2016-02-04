@@ -46,4 +46,15 @@ class Chandler::Commands::PushTest < Minitest::Test
     assert_match("Push v2.0.2…   ✔", stdout)
     assert_match("Push v99.1.18… ✔", stdout)
   end
+
+  def test_exits_with_warning_if_no_tags
+    push = Chandler::Commands::Push.new(:tags => [], :config => @config)
+
+    Mocha::Configuration.allow(:stubbing_non_public_method) do
+      push.expects(:exit).with(1).raises("exited")
+    end
+
+    assert_equal("exited", assert_raises { push.call }.message)
+    assert_match(/no version tags/i, stderr)
+  end
 end

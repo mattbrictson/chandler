@@ -20,6 +20,8 @@ module Chandler
       end
 
       def call
+        exit_with_warning if tags.empty?
+
         benchmarking_each_tag do |tag|
           github.create_or_update_release(
             :tag => tag,
@@ -47,6 +49,11 @@ module Chandler
             yield(tag)
           end
         end
+      end
+
+      def exit_with_warning
+        error("No version tags found.")
+        exit(1)
       end
     end
   end

@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* If Chandler can't find any version tags, print an error message rather than exiting silently.
 
 ## [0.1.2][] (2015-10-26)
 
