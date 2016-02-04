@@ -51,10 +51,10 @@ class Chandler::Commands::PushTest < Minitest::Test
     push = Chandler::Commands::Push.new(:tags => [], :config => @config)
 
     Mocha::Configuration.allow(:stubbing_non_public_method) do
-      push.expects(:exit).with(1).raises("exited")
+      push.expects(:exit).with(1).throws(:exited)
     end
 
-    assert_equal("exited", assert_raises { push.call }.message)
+    assert_throws(:exited) { push.call }
     assert_match(/no version tags/i, stderr)
   end
 end
