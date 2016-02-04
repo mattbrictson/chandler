@@ -32,7 +32,7 @@ module Chandler
     #
     def fetch(tag)
       versions.fetch(tag.version_number) do
-        fail NoMatchingVersion, "Couldn’t find #{tag} in #{path}"
+        raise NoMatchingVersion, "Couldn’t find #{tag} in #{path}"
       end
     end
 

@@ -80,6 +80,6 @@ class Chandler::GitTest < Minitest::Test
 
   def git(command)
     `git #{command}`
-    fail unless $CHILD_STATUS.success?
+    raise unless $CHILD_STATUS.success?
   end
 end

@@ -61,7 +61,7 @@ module Chandler
       message = "Couldn’t load GitHub credentials from ~/.netrc.\n"
       message << "For .netrc instructions, see: "
       message << "https://github.com/octokit/octokit.rb#using-a-netrc-file"
-      fail MissingCredentials, message
+      raise MissingCredentials, message
     end
   end
 end

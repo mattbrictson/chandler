@@ -101,7 +101,7 @@ class Chandler::LoggerTest < Minitest::Test
     logger = new_logger
 
     assert_raises("boom!") do
-      logger.benchmark("test") { fail "boom!" }
+      logger.benchmark("test") { raise "boom!" }
     end
 
     assert_match(/^test ✘$/, stdout)
@@ -112,7 +112,7 @@ class Chandler::LoggerTest < Minitest::Test
     logger = new_logger_with_color
 
     assert_raises("boom!") do
-      logger.benchmark("test") { fail "boom!" }
+      logger.benchmark("test") { raise "boom!" }
     end
 
     assert_match(

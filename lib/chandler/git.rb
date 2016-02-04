@@ -54,7 +54,7 @@ module Chandler
 
       message = "Failed to execute: #{args.join(' ')}"
       message << "\n#{err}" unless err.nil?
-      fail Error, message
+      raise Error, message
     end
   end
 end
