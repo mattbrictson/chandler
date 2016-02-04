@@ -15,6 +15,7 @@ class Chandler::CLI::ParserTest < Minitest::Test
     assert_match("--debug", parser.usage)
     assert_match("--help", parser.usage)
     assert_match("--version", parser.usage)
+    assert_match("--tag-prefix", parser.usage)
   end
 
   def test_args
@@ -47,6 +48,7 @@ class Chandler::CLI::ParserTest < Minitest::Test
       --git=../test/.git
       --github=test/repo
       --changelog=../test/changes.md
+      --tag-prefix=myapp-
       --dry-run
     )
     config = parse_arguments(*args).config
@@ -56,6 +58,7 @@ class Chandler::CLI::ParserTest < Minitest::Test
     assert_equal("../test/.git", config.git_path)
     assert_equal("test/repo", config.github_repository)
     assert_equal("../test/changes.md", config.changelog_path)
+    assert_equal("myapp-", config.tag_prefix)
   end
 
   def test_prints_version_and_exits

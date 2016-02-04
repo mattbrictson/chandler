@@ -5,8 +5,8 @@ require "chandler/logger"
 
 module Chandler
   class Configuration
-    attr_accessor :changelog_path, :git_path, :github_repository, :dry_run
-    attr_accessor :logger
+    attr_accessor :changelog_path, :git_path, :github_repository, :dry_run,
+                  :tag_prefix, :logger
 
     def initialize
       @changelog_path = "CHANGELOG.md"
@@ -20,7 +20,7 @@ module Chandler
     end
 
     def git
-      @git ||= Chandler::Git.new(:path => git_path)
+      @git ||= Chandler::Git.new(:path => git_path, :tag_mapper => tag_mapper)
     end
 
     def github
@@ -34,6 +34,11 @@ module Chandler
 
     def github_repository
       @github_repository || git.origin_remote
+    end
+
+    def tag_mapper
+      return ->(tag) { tag } if tag_prefix.nil?
+      ->(tag) { tag[/^#{Regexp.escape(tag_prefix)}(.*)/, 1] }
     end
   end
 end

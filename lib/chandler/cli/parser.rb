@@ -51,6 +51,11 @@ module Chandler
             config.changelog_path = p
           end
 
+          opts.on("--tag-prefix=[PREFIX]",
+                  "Use PREFIX to identify Git version tags") do |p|
+            config.tag_prefix = p
+          end
+
           opts.on("--dry-run",
                   "Simulate, but don’t actually push to GitHub") do |d|
             config.dry_run = d
