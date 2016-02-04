@@ -37,7 +37,7 @@ module Chandler
     end
 
     def tag_mapper
-      return :itself if tag_prefix.nil?
+      return ->(tag) { tag } if tag_prefix.nil?
       ->(tag) { tag[/^#{Regexp.escape(tag_prefix)}(.*)/, 1] }
     end
   end

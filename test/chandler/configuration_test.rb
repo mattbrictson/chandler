@@ -19,7 +19,7 @@ class Chandler::ConfigurationTest < Minitest::Test
     git = @config.git
     assert_instance_of(Chandler::Git, git)
     assert_equal("../test/.git", git.path)
-    assert_equal(:itself, git.tag_mapper)
+    assert_equal(:itself, git.tag_mapper.call(:itself))
   end
 
   def test_prefixed_git

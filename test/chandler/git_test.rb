@@ -61,7 +61,7 @@ class Chandler::GitTest < Minitest::Test
 
   private
 
-  def subject(mapper=:itself)
+  def subject(mapper=->(tag) { tag })
     @git ||= Chandler::Git.new(:path => @git_path, :tag_mapper => mapper)
   end
 
