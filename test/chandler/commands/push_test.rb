@@ -22,6 +22,13 @@ class Chandler::Commands::PushTest < Minitest::Test
     push.call
   end
 
+  def test_changelog_is_used_to_obtain_notes_using_tag_mapper
+    @config.stubs(:tag_mapper).returns(->(_tag) { "foo" })
+    @config.changelog.expects(:fetch).with("foo").returns("notes")
+    push = Chandler::Commands::Push.new(:tags => %w(v1), :config => @config)
+    push.call
+  end
+
   def test_github_is_used_to_create_or_update_releases
     @github
       .expects(:create_or_update_release)

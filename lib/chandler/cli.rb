@@ -41,7 +41,7 @@ module Chandler
 
     def push
       Chandler::Commands::Push.new(
-        :tags => args.empty? ? config.git.tagged_versions : args,
+        :tags => args.empty? ? config.git.version_tags : args,
         :config => config
       )
     end
