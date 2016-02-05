@@ -54,6 +54,24 @@ class Chandler::Commands::PushTest < Minitest::Test
     assert_match("Push v99.1.18… ✔", stdout)
   end
 
+  def test_skipped_tag_is_printed_to_stdout
+    @config.changelog
+           .stubs(:fetch)
+           .with("v2.0.2")
+           .raises(Chandler::Changelog::NoMatchingVersion)
+
+    push = Chandler::Commands::Push.new(
+      :tags => %w(v1 v2.0.2 v99.1.18),
+      :config => @config
+    )
+    push.call
+
+    assert_match("Push v1…       ✔", stdout)
+    refute_match("Push v2.0.2…   ✔", stdout)
+    assert_match("Skip v2.0.2 (no v2.0.2 entry in CHANGELOG.md)", stdout)
+    assert_match("Push v99.1.18… ✔", stdout)
+  end
+
   def test_exits_with_warning_if_no_tags
     push = Chandler::Commands::Push.new(:tags => [], :config => @config)
 
