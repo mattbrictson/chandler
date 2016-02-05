@@ -5,12 +5,12 @@ require "tempfile"
 require "chandler/git"
 
 class Chandler::GitTest < Minitest::Test
-  def test_tagged_versions_for_empty_repo
+  def test_version_tags_for_empty_repo
     create_git_repo
-    assert_equal([], subject.tagged_versions)
+    assert_equal([], subject.version_tags)
   end
 
-  def test_tagged_versions
+  def test_version_tags
     create_git_repo do
       git("commit --allow-empty -m 1")
       git("tag -a v0.1.0 -m 0.1.0")
@@ -20,10 +20,10 @@ class Chandler::GitTest < Minitest::Test
       git("tag -a v0.11.0 -m 0.11.0")
       git("tag -a wip -m wip")
     end
-    assert_equal(%w(v0.1.0 v0.2.0 v0.11.0), subject.tagged_versions)
+    assert_equal(%w(v0.1.0 v0.2.0 v0.11.0), subject.version_tags)
   end
 
-  def test_tagged_versions_with_prefix
+  def test_version_tags_with_prefix
     create_git_repo do
       git("commit --allow-empty -m 1")
       git("tag -a myapp-0.1.0 -m 0.1.0")
@@ -34,7 +34,10 @@ class Chandler::GitTest < Minitest::Test
       git("tag -a wip -m wip")
     end
     mapper = ->(tag) { tag[/myapp-(.*)/, 1] }
-    assert_equal(%w(0.1.0 0.2.0 0.11.0), subject(mapper).tagged_versions)
+    assert_equal(
+      %w(myapp-0.1.0 myapp-0.2.0 myapp-0.11.0),
+      subject(mapper).version_tags
+    )
   end
 
   def test_origin_remote_for_empty_repo
