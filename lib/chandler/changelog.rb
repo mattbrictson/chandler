@@ -36,6 +36,10 @@ module Chandler
       end
     end
 
+    def basename
+      File.basename(path.to_s)
+    end
+
     private
 
     # Transforms the changelog into a hash where the keys are version numbers
