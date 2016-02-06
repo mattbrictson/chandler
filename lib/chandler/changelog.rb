@@ -10,9 +10,11 @@ module Chandler
     NoMatchingVersion = Class.new(StandardError)
 
     HEADING_PATTERNS = [
-      /^##[[:space:]]+.*\n/,  # Markdown "atx" style
+      /^#[[:space:]]+.*\n/,   # Markdown "atx" style
+      /^##[[:space:]]+.*\n/,
       /^###[[:space:]]+.*\n/,
-      /^==[[:space:]]+.*\n/,  # Rdoc style
+      /^=[[:space:]]+.*\n/,   # Rdoc style
+      /^==[[:space:]]+.*\n/,
       /^===[[:space:]]+.*\n/,
       /^\S.*\n-+\n/           # Markdown "Setext" style
     ].freeze
@@ -49,19 +51,16 @@ module Chandler
     # The version numbers are assumed to be contained at Markdown or Rdoc
     # headings. The release notes for those version numbers are the text
     # delimited by those headings. The algorithm tries various styles of these
-    # Markdown and Rdoc headings (see `HEADING_PATTERNS`) until it finds one
-    # that matches.
+    # Markdown and Rdoc headings (see `HEADING_PATTERNS`).
     #
     # The resulting hash entries look like:
     # { "1.0.1" => "\nRelease notes for 1.0.1.\n" }
     #
     def versions
       @versions ||= begin
-        versions = HEADING_PATTERNS.find do |heading_re|
-          found = versions_at_headings(heading_re)
-          break(found) unless found.empty?
+        HEADING_PATTERNS.reduce({}) do |found, heading_re|
+          versions_at_headings(heading_re).merge(found)
         end
-        versions || {}
       end
     end
 

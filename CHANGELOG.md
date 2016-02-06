@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Chandler now understands versions at Markdown/Rdoc h1-level headings (previously only h2 and h3 were searched).
 * If Chandler can't find any version tags, print an error message rather than exiting silently.
 * If Chandler can't find a version in your CHANGELOG, it will log a warning rather than exiting with an uncaught exception.
 * Add `--tag-prefix` option to allow for other Git version tag formats (e.g. `myapp-v1.0.0`; see [#3](https://github.com/mattbrictson/chandler/issues/3))
