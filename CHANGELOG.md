@@ -8,6 +8,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 
 * Your contribution here!
 * If Chandler can't find any version tags, print an error message rather than exiting silently.
+* If Chandler can't find a version in your CHANGELOG, it will log a warning rather than exiting with an uncaught exception.
 * Add `--tag-prefix` option to allow for other Git version tag formats (e.g. `myapp-v1.0.0`; see [#3](https://github.com/mattbrictson/chandler/issues/3))
 
 ## [0.1.2][] (2015-10-26)
