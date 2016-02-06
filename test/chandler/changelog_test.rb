@@ -37,6 +37,23 @@ class Chandler::ChangelogTest < Minitest::Test
     assert_match("Initial release", changelog.fetch("v0.0.1"))
   end
 
+  def test_fetch_angular_versions
+    changelog = new_changelog("angular.md")
+
+    assert_match("Copy `inputs` for expressions", changelog.fetch("1.5.0"))
+    assert_match("does not affect the `ngSwipe`", changelog.fetch("1.5.0-rc.2"))
+    assert_match("**filterFilter:** due to", changelog.fetch("1.4.0-beta.2"))
+  end
+
+  def test_fetch_async_versions
+    changelog = new_changelog("async.md")
+
+    assert_match('Allow using `"consructor"`', changelog.fetch("v1.5.2"))
+    assert_match("Various doc fixes (#971, #980)", changelog.fetch("v1.5.1"))
+    assert_match("Added `asyncify`/`wrapSync`", changelog.fetch("v1.3.0"))
+    assert_match("No known breaking changes", changelog.fetch("v1.0.0"))
+  end
+
   def test_fetch_bootstrap_sass_versions
     changelog = new_changelog("bootstrap-sass.md")
 
@@ -95,6 +112,16 @@ class Chandler::ChangelogTest < Minitest::Test
     assert_match("Support added for Rails 4.2", changelog.fetch("v3.4.0"))
     assert_match("Support multiple warden config", changelog.fetch("v3.3.0"))
     assert_match("`bcrypt` dependency updated", changelog.fetch("v3.2.4"))
+  end
+
+  def test_fetch_less_js_versions
+    changelog = new_changelog("less.js.md")
+
+    assert_match("Underscore now allowed in dimen", changelog.fetch("2.6.0"))
+    assert_match("Fix import inline a URL", changelog.fetch("2.5.3"))
+    assert_match("less.parse now exposes a way to", changelog.fetch("2.2.0"))
+    assert_match("browser bundle no longer leaks", changelog.fetch("2.0.0-b3"))
+    assert_match("support @import-once", changelog.fetch("1.3.1"))
   end
 
   def test_fetch_rake_versions
