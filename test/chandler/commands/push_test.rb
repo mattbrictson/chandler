@@ -42,6 +42,16 @@ class Chandler::Commands::PushTest < Minitest::Test
     push.call
   end
 
+  def test_tag_prefix_is_removed_from_title_when_pushing_to_github
+    @config.tag_prefix = "app-"
+    @github
+      .expects(:create_or_update_release)
+      .with(:tag => "app-1", :title => "1", :description => "notes")
+
+    push = Chandler::Commands::Push.new(:tags => %w(app-1), :config => @config)
+    push.call
+  end
+
   def test_progress_is_pretty_printed_to_stdout
     push = Chandler::Commands::Push.new(
       :tags => %w(v1 v2.0.2 v99.1.18),

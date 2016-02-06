@@ -26,10 +26,10 @@ module Chandler
       def call
         exit_with_warning if tags.empty?
 
-        each_tag_with_notes do |tag, notes|
+        each_tag_with_version_and_notes do |tag, version, notes|
           github.create_or_update_release(
             :tag => tag,
-            :title => tag.version_number,
+            :title => version.version_number,
             :description => notes
           )
         end
@@ -37,15 +37,15 @@ module Chandler
 
       private
 
-      def each_tag_with_notes
+      def each_tag_with_version_and_notes
         width = tags.map(&:length).max
         tags.each do |tag|
-          notes = changelog_notes_for_tag(tag)
+          version, notes = changelog_version_and_notes_for_tag(tag)
           next if notes.nil?
 
           ellipsis = "…".ljust(1 + width - tag.length)
           benchmark("Push #{tag.blue}#{ellipsis}") do
-            yield(tag, notes)
+            yield(tag, version, notes)
           end
         end
       end
@@ -55,9 +55,9 @@ module Chandler
         exit(1)
       end
 
-      def changelog_notes_for_tag(tag)
+      def changelog_version_and_notes_for_tag(tag)
         version = tag_mapper.call(tag)
-        changelog.fetch(version).strip
+        [version, changelog.fetch(version).strip]
       rescue Chandler::Changelog::NoMatchingVersion
         info("Skip #{tag} (no #{version} entry in #{changelog.basename})".gray)
         nil
