@@ -3,9 +3,6 @@ AllCops:
   Exclude:
     - "*.gemspec"
 
-Style/BarePercentLiterals:
-  EnforcedStyle: percent_q
-
 Metrics/AbcSize:
   Exclude:
     - "test/**/*"
@@ -17,6 +14,9 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Exclude:
     - "test/**/*"
+
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
 
 Style/ClassAndModuleChildren:
   Enabled: false
