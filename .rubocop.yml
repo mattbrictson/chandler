@@ -3,6 +3,9 @@ AllCops:
   Exclude:
     - "*.gemspec"
 
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+
 Metrics/AbcSize:
   Exclude:
     - "test/**/*"
