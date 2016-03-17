@@ -16,7 +16,8 @@ module Chandler
       /^=[[:space:]]+.*\n/,   # Rdoc style
       /^==[[:space:]]+.*\n/,
       /^===[[:space:]]+.*\n/,
-      /^\S.*\n-+\n/           # Markdown "Setext" style
+      /^\S.*\n=+\n/,          # Markdown "Setext" style
+      /^\S.*\n-+\n/
     ].freeze
 
     attr_reader :path
