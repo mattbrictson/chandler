@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Support Markdown "setext" style h1-level headings [#11](https://github.com/mattbrictson/chandler/pull/11)
 
 ## [0.2.0][] (2016-02-19)
 
