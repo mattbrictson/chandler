@@ -134,6 +134,16 @@ class Chandler::ChangelogTest < Minitest::Test
     assert_match("Added --build-all option to rake", changelog.fetch("v10.3"))
   end
 
+  def test_fetch_realm_cocoa
+    changelog = new_changelog("realm-cocoa.md")
+
+    assert_match("Fix a crash when opening a Realm", changelog.fetch("v0.98.5"))
+    assert_match("addOrUpdate:/createOrUpdate: to", changelog.fetch("v0.98.4"))
+    assert_match("Fix crashes when deleting an obj", changelog.fetch("v0.98.1"))
+    assert_match("Added anonymous analytics on", changelog.fetch("v0.94.0"))
+    assert_match("RLMArray has been split into", changelog.fetch("v0.87.0"))
+  end
+
   def test_fetch_rubocop_versions
     changelog = new_changelog("rubocop.md")
 
