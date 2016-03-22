@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.3.0][] (2016-03-22)
+
 * Support Markdown "setext" style h1-level headings [#11](https://github.com/mattbrictson/chandler/pull/11)
 
 ## [0.2.0][] (2016-02-19)
@@ -29,7 +32,8 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mattbrictson/chandler/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mattbrictson/chandler/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/mattbrictson/chandler/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mattbrictson/chandler/compare/v0.1.0...v0.1.1
