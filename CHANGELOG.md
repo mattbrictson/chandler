@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Fix a bug where the formatting of certain Markdown release notes were
+  inadvertently altered due to stripping indentation off the first line of the
+  text.
 
 ## [0.3.0][] (2016-03-22)
 

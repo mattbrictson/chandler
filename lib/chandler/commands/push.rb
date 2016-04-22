@@ -57,10 +57,18 @@ module Chandler
 
       def changelog_version_and_notes_for_tag(tag)
         version = tag_mapper.call(tag)
-        [version, changelog.fetch(version).strip]
+        notes = strip_surrounding_empty_lines(changelog.fetch(version))
+        [version, notes]
       rescue Chandler::Changelog::NoMatchingVersion
         info("Skip #{tag} (no #{version} entry in #{changelog.basename})".gray)
         nil
+      end
+
+      # Returns a new string with leading and trailing empty lines removed. A
+      # line is empty if it is zero-length or contains only whitespace.
+      def strip_surrounding_empty_lines(str)
+        str.sub(/\A[[:space:]]*^/, "")
+           .sub(/$[[:space:]]*\z/, "")
       end
     end
   end

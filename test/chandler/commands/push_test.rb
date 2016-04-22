@@ -52,6 +52,19 @@ class Chandler::Commands::PushTest < Minitest::Test
     push.call
   end
 
+  def test_leading_and_trailing_blank_lines_are_stripped_when_pushing_to_github
+    @config.changelog
+           .expects(:fetch).with("v1")
+           .returns("\n\n  * one\n\n  * two\n\n")
+    @github.unstub(:create_or_update_release)
+    @github
+      .expects(:create_or_update_release)
+      .with(:tag => "v1", :title => "1", :description => "  * one\n\n  * two")
+
+    push = Chandler::Commands::Push.new(:tags => %w(v1), :config => @config)
+    push.call
+  end
+
   def test_progress_is_pretty_printed_to_stdout
     push = Chandler::Commands::Push.new(
       :tags => %w(v1 v2.0.2 v99.1.18),
