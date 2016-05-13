@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.3.1][] (2016-05-13)
+
 * Fix a bug where the formatting of certain Markdown release notes were
   inadvertently altered due to stripping indentation off the first line of the
   text.
@@ -35,7 +38,8 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/mattbrictson/chandler/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/mattbrictson/chandler/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mattbrictson/chandler/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/mattbrictson/chandler/compare/v0.1.1...v0.1.2
