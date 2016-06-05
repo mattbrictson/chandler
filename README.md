@@ -46,7 +46,7 @@ machine api.github.com
   password c0d3b4ssssss!
 ```
 
-For more security, you can use an OAuth access token in place of your password. [Here's how to generate one][access-token].
+For more security, you can use an OAuth access token in place of your password. [Here's how to generate one][access-token]. Make sure to enable `public_repo` scope for the token.
 
 
 ## Usage
