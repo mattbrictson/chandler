@@ -4,7 +4,8 @@ source "https://rubygems.org"
 gemspec
 
 # Optional development dependencies; requires bundler >= 1.10.
-# Note that these gems assume a Ruby 2.2 environment. Install them using:
+# Note that these gems assume a Ruby environment greater than 2.2.5.
+# Install them using:
 #
 # bundle install --with guard
 #

@@ -25,7 +25,11 @@ module Chandler
 
     def github
       @github ||=
-        Chandler::GitHub.new(:repository => github_repository, :config => self)
+        Chandler::GitHub.new(
+          :repository => github_repository,
+          :config => self,
+          :environment => ENV
+        )
     end
 
     def changelog
