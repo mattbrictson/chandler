@@ -144,6 +144,17 @@ class Chandler::ChangelogTest < Minitest::Test
     assert_match("RLMArray has been split into", changelog.fetch("v0.87.0"))
   end
 
+  def test_fetch_rst_definitions_semver
+    changelog = new_changelog("rst-definition.md")
+
+    assert_match("Added ACME project", changelog.fetch("0.0.1"))
+    assert_match("Pre-release", changelog.fetch("0.0.2-rc1"))
+    assert_match("Dev pre-release", changelog.fetch("0.0.2-dev-xyz"))
+    assert_match("Release", changelog.fetch("0.0.2"))
+    assert_match("Release 0.1", changelog.fetch("0.1.0"))
+    assert_match("Update", changelog.fetch("v0.1.1"))
+  end
+
   def test_fetch_rubocop_versions
     changelog = new_changelog("rubocop.md")
 
