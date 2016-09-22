@@ -17,7 +17,8 @@ module Chandler
       /^==[[:space:]]+.*\n/,
       /^===[[:space:]]+.*\n/,
       /^\S.*\n=+\n/,          # Markdown "Setext" style
-      /^\S.*\n-+\n/
+      /^\S.*\n-+\n/,
+      /^[vr]?[0-9]+\S+[[:space:]]*\n/ # Lines with version string
     ].freeze
 
     attr_reader :path
