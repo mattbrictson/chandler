@@ -7,15 +7,17 @@ class Chandler::GitHubSetupTest < Minitest::Test
     access_token = "12345"
 
     mocked_client = MiniTest::Mock.new
-    mocked_client.expect(:login, {})
-    mocked_client.expect(:new, :access_token => access_token)
+    mocked_client.expect(:login, :access_token => access_token)
 
-    outer_env = { "CHANDLER_GITHUB_API_TOKEN" => access_token }
+    config = Chandler::Configuration.new
+    config.environment = { "CHANDLER_GITHUB_API_TOKEN" => access_token }
+
+    Octokit::Client.stubs(:new)
+                   .with(:access_token => access_token).returns(mocked_client)
 
     github = Chandler::GitHub.new(
       :repository => "repo",
-      :config => nil,
-      :environment => outer_env
+      :config => config
     )
     github.send(:client)
     mocked_client.verify
@@ -32,8 +34,7 @@ class Chandler::GitHubInteractionTest < Minitest::Test
 
     @github = Chandler::GitHub.new(
       :repository => "repo",
-      :config => @config,
-      :environment => {}
+      :config => @config
     )
   end
 

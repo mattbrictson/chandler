@@ -9,8 +9,7 @@ class Chandler::Commands::PushTest < Minitest::Test
   def setup
     @github = Chandler::GitHub.new(
       :repository => "",
-      :config => nil,
-      :environment => {}
+      :config => nil
     )
     @github.stubs(:create_or_update_release)
 

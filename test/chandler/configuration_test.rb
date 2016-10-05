@@ -52,4 +52,14 @@ class Chandler::ConfigurationTest < Minitest::Test
     assert_instance_of(Chandler::Changelog, changelog)
     assert_equal("../test/history.md", changelog.path)
   end
+
+  def test_client_options_as_netrc
+    @config.environment = { "ANYTHING" => "1234" }
+    assert_equal({ :netrc => true }, @config.client_options)
+  end
+
+  def test_client_options_as_access_token
+    @config.environment = { "CHANDLER_GITHUB_API_TOKEN" => "1234" }
+    assert_equal({ :access_token => "1234" }, @config.client_options)
+  end
 end
