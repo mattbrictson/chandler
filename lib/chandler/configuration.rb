@@ -24,10 +24,10 @@ module Chandler
     end
 
     def octokit
-      @octokit ||= Octokit::Client.new(client_options)
+      @octokit ||= Octokit::Client.new(octokit_options)
     end
 
-    def client_options
+    def octokit_options
       chandler_token_key = "CHANDLER_GITHUB_API_TOKEN"
       if environment[chandler_token_key]
         { :access_token => environment[chandler_token_key] }
