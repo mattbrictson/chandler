@@ -7,7 +7,10 @@ class Chandler::Commands::PushTest < Minitest::Test
   include LoggerMocks
 
   def setup
-    @github = Chandler::GitHub.new(:repository => "", :config => nil)
+    @github = Chandler::GitHub.new(
+      :repository => "",
+      :config => nil
+    )
     @github.stubs(:create_or_update_release)
 
     @config = Chandler::Configuration.new

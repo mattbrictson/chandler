@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Adds support for using `CHANDLER_GITHUB_API_TOKEN` to authenticate your API requests - Orta
 
 ## [0.4.0][] (2016-09-23)
 

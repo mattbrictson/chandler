@@ -2,8 +2,9 @@ require "octokit"
 
 module Chandler
   # A facade for performing GitHub API operations on a given GitHub repository
-  # (specified as a git URL or as `owner/repo` format). Requires that
-  # "~/.netrc" is properly configured with GitHub credentials.
+  # (specified as a git URL or as `owner/repo` format). Requires either that
+  # "~/.netrc" is properly configured with GitHub credentials or an auth token
+  # is available in the host environment at "CHANDLER_GITHUB_API_TOKEN""
   #
   class GitHub
     MissingCredentials = Class.new(StandardError)
@@ -52,7 +53,7 @@ module Chandler
 
     def client
       @client ||= begin
-        octokit = Octokit::Client.new(:netrc => true)
+        octokit = config.octokit
         octokit.login ? octokit : fail_missing_credentials
       end
     end

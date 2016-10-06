@@ -36,15 +36,19 @@ chandler takes the hassle out of maintaining these two separate formats: your CH
 gem install chandler
 ```
 
-### 2. Configure .netrc
+### 2. Configure .netrc or set ENV vars
 
-In order to access the GitHub API on your behalf, you must provide chandler with your GitHub credentials. Do this by creating a `~/.netrc` file with your GitHub username and password, like this:
+In order to access the GitHub API on your behalf, you must provide chandler with your GitHub credentials. 
+
+Do this by creating a `~/.netrc` file with your GitHub username and password, like this:
 
 ```
 machine api.github.com
   login defunkt
   password c0d3b4ssssss!
 ```
+
+Or expose an ENV variable: `CHANDLER_GITHUB_API_TOKEN` inside your CI.
 
 For more security, you can use an OAuth access token in place of your password. [Here's how to generate one][access-token]. Make sure to enable `public_repo` scope for the token.
 

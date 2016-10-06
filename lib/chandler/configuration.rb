@@ -6,7 +6,7 @@ require "chandler/logger"
 module Chandler
   class Configuration
     attr_accessor :changelog_path, :git_path, :github_repository, :dry_run,
-                  :tag_prefix, :logger
+                  :tag_prefix, :logger, :environment
 
     def initialize
       @changelog_path = "CHANGELOG.md"
@@ -23,9 +23,28 @@ module Chandler
       @git ||= Chandler::Git.new(:path => git_path, :tag_mapper => tag_mapper)
     end
 
+    def octokit
+      @octokit ||= Octokit::Client.new(octokit_options)
+    end
+
+    def octokit_options
+      chandler_token_key = "CHANDLER_GITHUB_API_TOKEN"
+      if environment[chandler_token_key]
+        { :access_token => environment[chandler_token_key] }
+      else
+        { :netrc => true }
+      end
+    end
+
+    def environment
+      @environment ||= ENV
+    end
+
     def github
-      @github ||=
-        Chandler::GitHub.new(:repository => github_repository, :config => self)
+      @github ||= Chandler::GitHub.new(
+        :repository => github_repository,
+        :config => self
+      )
     end
 
     def changelog

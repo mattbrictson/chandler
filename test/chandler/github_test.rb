@@ -2,7 +2,29 @@ require "minitest_helper"
 require "chandler/configuration"
 require "chandler/github"
 
-class Chandler::GitHubTest < Minitest::Test
+class Chandler::GitHubSetupTest < Minitest::Test
+  def test_auths_with_access_token
+    access_token = "12345"
+
+    mocked_client = MiniTest::Mock.new
+    mocked_client.expect(:login, :access_token => access_token)
+
+    config = Chandler::Configuration.new
+    config.environment = { "CHANDLER_GITHUB_API_TOKEN" => access_token }
+
+    Octokit::Client.stubs(:new)
+                   .with(:access_token => access_token).returns(mocked_client)
+
+    github = Chandler::GitHub.new(
+      :repository => "repo",
+      :config => config
+    )
+    github.send(:client)
+    mocked_client.verify
+  end
+end
+
+class Chandler::GitHubInteractionTest < Minitest::Test
   def setup
     @config = Chandler::Configuration.new
 
@@ -10,7 +32,10 @@ class Chandler::GitHubTest < Minitest::Test
     @octokit.stubs(:login => "mattbrictson")
     Octokit::Client.stubs(:new).with(:netrc => true).returns(@octokit)
 
-    @github = Chandler::GitHub.new(:repository => "repo", :config => @config)
+    @github = Chandler::GitHub.new(
+      :repository => "repo",
+      :config => @config
+    )
   end
 
   def test_fails_if_missing_credentials
