@@ -30,7 +30,10 @@ module Chandler
         @args = unprocessed.compact
       end
 
-      def option_parser # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Metrics/BlockLength
+      def option_parser
         OptionParser.new do |opts|
           opts.banner = "Usage: chandler push [tag] [options]"
           opts.separator("")
