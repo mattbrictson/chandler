@@ -28,9 +28,9 @@ class Chandler::GitHubInteractionTest < Minitest::Test
   def setup
     @config = Chandler::Configuration.new
 
-    @octokit = Octokit::Client.new
+    @octokit = Octokit::Client.new(:netrc => true)
     @octokit.stubs(:login => "mattbrictson")
-    Octokit::Client.stubs(:new).with(:netrc => true).returns(@octokit)
+    @config.stubs(:octokit).returns(@octokit)
 
     @github = Chandler::GitHub.new(
       :repository => "repo",
@@ -41,7 +41,7 @@ class Chandler::GitHubInteractionTest < Minitest::Test
   def test_fails_if_missing_credentials
     @octokit.stubs(:login => nil)
 
-    assert_raises(Chandler::GitHub::MissingCredentials) do
+    assert_raises(Chandler::GitHub::NetrcAuthenticationFailure) do
       @github.create_or_update_release(
         :tag => "v1.0.2",
         :title => "1.0.2",
@@ -137,5 +137,18 @@ class Chandler::GitHubInteractionTest < Minitest::Test
       :title => title,
       :description => desc
     )
+  end
+
+  def test_raises_exception_if_repo_doesnt_exist
+    @client.expects(:release_for_tag).raises(Octokit::NotFound)
+    @client.expects(:create_release).raises(Octokit::NotFound)
+
+    assert_raises(Chandler::GitHub::InvalidRepository) do
+      @github.create_or_update_release(
+        :tag => "v1.0.2",
+        :title => "1.0.2",
+        :description => "desc"
+      )
+    end
   end
 end

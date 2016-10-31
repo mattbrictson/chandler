@@ -1,4 +1,5 @@
 require "octokit"
+require "chandler/github/errors"
 
 module Chandler
   # A facade for performing GitHub API operations on a given GitHub repository
@@ -7,8 +8,6 @@ module Chandler
   # is available in the host environment at "CHANDLER_GITHUB_API_TOKEN""
   #
   class GitHub
-    MissingCredentials = Class.new(StandardError)
-
     attr_reader :repository, :config
 
     def initialize(repository:, config:)
@@ -23,6 +22,8 @@ module Chandler
       return update_release(release, title, description) if release
 
       create_release(tag, title, description)
+    rescue Octokit::NotFound
+      raise InvalidRepository, repository
     end
 
     private
@@ -59,10 +60,8 @@ module Chandler
     end
 
     def fail_missing_credentials
-      message = "Couldn’t load GitHub credentials from ~/.netrc.\n"
-      message << "For .netrc instructions, see: "
-      message << "https://github.com/octokit/octokit.rb#using-a-netrc-file"
-      raise MissingCredentials, message
+      netrc = config.octokit.netrc
+      raise netrc ? NetrcAuthenticationFailure : TokenAuthenticationFailure
     end
   end
 end
