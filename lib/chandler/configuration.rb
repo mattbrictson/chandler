@@ -23,23 +23,6 @@ module Chandler
       @git ||= Chandler::Git.new(:path => git_path, :tag_mapper => tag_mapper)
     end
 
-    def octokit
-      @octokit ||= Octokit::Client.new(octokit_options)
-    end
-
-    def octokit_options
-      chandler_token_key = "CHANDLER_GITHUB_API_TOKEN"
-      if environment[chandler_token_key]
-        { :access_token => environment[chandler_token_key] }
-      else
-        { :netrc => true }
-      end
-    end
-
-    def environment
-      @environment ||= ENV
-    end
-
     def github
       @github ||= Chandler::GitHub.new(
         :repository => github_repository,

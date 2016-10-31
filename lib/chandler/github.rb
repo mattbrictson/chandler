@@ -1,5 +1,6 @@
-require "octokit"
+require "chandler/github/client"
 require "chandler/github/errors"
+require "chandler/github/remote"
 
 module Chandler
   # A facade for performing GitHub API operations on a given GitHub repository
@@ -11,7 +12,8 @@ module Chandler
     attr_reader :repository, :config
 
     def initialize(repository:, config:)
-      @repository = parse_repository(repository)
+      @repository = repository
+      @remote = Remote.parse(repository)
       @config = config
     end
 
@@ -28,12 +30,10 @@ module Chandler
 
     private
 
-    def parse_repository(repo)
-      repo[%r{(git@github.com:|://github.com/)(.*)\.git}, 2] || repo
-    end
+    attr_reader :remote
 
     def existing_release(tag)
-      release = client.release_for_tag(repository, tag)
+      release = client.release_for_tag(remote.repository, tag)
       release.id.nil? ? nil : release
     rescue Octokit::NotFound
       nil
@@ -49,19 +49,13 @@ module Chandler
     end
 
     def create_release(tag, title, desc)
-      client.create_release(repository, tag, :name => title, :body => desc)
+      client.create_release(
+        remote.repository, tag, :name => title, :body => desc
+      )
     end
 
     def client
-      @client ||= begin
-        octokit = config.octokit
-        octokit.login ? octokit : fail_missing_credentials
-      end
-    end
-
-    def fail_missing_credentials
-      netrc = config.octokit.netrc
-      raise netrc ? NetrcAuthenticationFailure : TokenAuthenticationFailure
+      @client ||= Client.new(:host => remote.host).tap(&:login!)
     end
   end
 end
