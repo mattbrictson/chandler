@@ -1,4 +1,6 @@
-require "octokit"
+require "chandler/github/client"
+require "chandler/github/errors"
+require "chandler/github/remote"
 
 module Chandler
   # A facade for performing GitHub API operations on a given GitHub repository
@@ -7,12 +9,11 @@ module Chandler
   # is available in the host environment at "CHANDLER_GITHUB_API_TOKEN""
   #
   class GitHub
-    MissingCredentials = Class.new(StandardError)
-
     attr_reader :repository, :config
 
     def initialize(repository:, config:)
-      @repository = parse_repository(repository)
+      @repository = repository
+      @remote = Remote.parse(repository)
       @config = config
     end
 
@@ -23,16 +24,16 @@ module Chandler
       return update_release(release, title, description) if release
 
       create_release(tag, title, description)
+    rescue Octokit::NotFound
+      raise InvalidRepository, repository
     end
 
     private
 
-    def parse_repository(repo)
-      repo[%r{(git@github.com:|://github.com/)(.*)\.git}, 2] || repo
-    end
+    attr_reader :remote
 
     def existing_release(tag)
-      release = client.release_for_tag(repository, tag)
+      release = client.release_for_tag(remote.repository, tag)
       release.id.nil? ? nil : release
     rescue Octokit::NotFound
       nil
@@ -48,21 +49,13 @@ module Chandler
     end
 
     def create_release(tag, title, desc)
-      client.create_release(repository, tag, :name => title, :body => desc)
+      client.create_release(
+        remote.repository, tag, :name => title, :body => desc
+      )
     end
 
     def client
-      @client ||= begin
-        octokit = config.octokit
-        octokit.login ? octokit : fail_missing_credentials
-      end
-    end
-
-    def fail_missing_credentials
-      message = "Couldn’t load GitHub credentials from ~/.netrc.\n"
-      message << "For .netrc instructions, see: "
-      message << "https://github.com/octokit/octokit.rb#using-a-netrc-file"
-      raise MissingCredentials, message
+      @client ||= Client.new(:host => remote.host).tap(&:login!)
     end
   end
 end

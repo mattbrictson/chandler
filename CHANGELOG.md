@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* [#19](https://github.com/mattbrictson/chandler/pull/19): Add GitHub Enterprise support - [@mattbrictson](https://github.com/mattbrictson)
 
 ## [0.5.0][] (2016-10-07)
 

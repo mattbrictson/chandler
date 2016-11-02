@@ -38,7 +38,7 @@ gem install chandler
 
 ### 2. Configure .netrc or set ENV vars
 
-In order to access the GitHub API on your behalf, you must provide chandler with your GitHub credentials. 
+In order to access the GitHub API on your behalf, you must provide chandler with your GitHub credentials.
 
 Do this by creating a `~/.netrc` file with your GitHub username and password, like this:
 
@@ -80,6 +80,21 @@ Other command-line options:
 * `--changelog=History.md` – location of the CHANGELOG (defaults to `CHANGELOG.md`)
 * `--tag-prefix=myapp-` – specify Git version tags are in the format `myapp-1.0.0` instead of `1.0.0`
 
+## GitHub Enterprise
+
+Chandler supports GitHub Enterprise as well as public GitHub repositories. It will make an educated guess as to where your GitHub Enterprise installation is located based on the `origin` git remote. You can also specify your GitHub Enterprise repository using the `--github` option like this:
+
+```
+--github=git@github.mycompany.com:organization/project.git
+```
+
+Or like this:
+
+```
+--github=https://github.mycompany.com/organization/project
+```
+
+To authenticate, Chandler relies on your `~/.netrc`, as explained above. Replace `api.github.com` with the hostname of your GitHub Enterprise installation (`github.mycompany.com` in the example).
 
 ## Rakefile integration
 
