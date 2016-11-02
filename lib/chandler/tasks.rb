@@ -2,6 +2,7 @@ require "bundler/gem_helper"
 require "chandler/configuration"
 require "chandler/refinements/version_format"
 require "chandler/commands/push"
+require "rake"
 
 using Chandler::Refinements::VersionFormat
 
