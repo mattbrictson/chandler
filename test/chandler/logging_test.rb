@@ -16,12 +16,10 @@ class Chandler::LoggingTest < Minitest::Test
     logger = subject.config.logger
 
     logger.expects(:benchmark)
-    logger.expects(:debug)
     logger.expects(:error)
     logger.expects(:info)
 
     subject.send(:benchmark)
-    subject.send(:debug)
     subject.send(:error)
     subject.send(:info)
   end
@@ -31,7 +29,6 @@ class Chandler::LoggingTest < Minitest::Test
 
     assert_includes(subject.private_methods, :logger)
     assert_includes(subject.private_methods, :benchmark)
-    assert_includes(subject.private_methods, :debug)
     assert_includes(subject.private_methods, :error)
     assert_includes(subject.private_methods, :info)
   end

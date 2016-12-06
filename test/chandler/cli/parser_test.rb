@@ -12,7 +12,6 @@ class Chandler::CLI::ParserTest < Minitest::Test
     assert_match("--github", parser.usage)
     assert_match("--changelog", parser.usage)
     assert_match("--dry-run", parser.usage)
-    assert_match("--debug", parser.usage)
     assert_match("--help", parser.usage)
     assert_match("--version", parser.usage)
     assert_match("--tag-prefix", parser.usage)
@@ -22,7 +21,6 @@ class Chandler::CLI::ParserTest < Minitest::Test
     assert_equal([], parse_arguments.args)
     assert_equal([], parse_arguments("--dry-run").args)
     assert_equal(["push"], parse_arguments("push").args)
-    assert_equal(["push"], parse_arguments("--debug", "push").args)
     assert_equal(["push"], parse_arguments("push", "--git=.git").args)
     assert_equal(
       ["push", "v1.0.1"],
@@ -34,7 +32,6 @@ class Chandler::CLI::ParserTest < Minitest::Test
     default_config = Chandler::Configuration.new
     config = parse_arguments.config
 
-    assert_equal(config.logger.verbose?, default_config.logger.verbose?)
     assert_equal(config.dry_run?, default_config.dry_run?)
     assert_equal(config.git_path, default_config.git_path)
     assert_equal(config.github_repository, default_config.github_repository)
@@ -43,7 +40,6 @@ class Chandler::CLI::ParserTest < Minitest::Test
 
   def test_config_is_changed_based_on_options
     args = %w(
-      --debug
       push
       --git=../test/.git
       --github=test/repo
@@ -53,7 +49,6 @@ class Chandler::CLI::ParserTest < Minitest::Test
     )
     config = parse_arguments(*args).config
 
-    assert(config.logger.verbose?)
     assert(config.dry_run?)
     assert_equal("../test/.git", config.git_path)
     assert_equal("test/repo", config.github_repository)
