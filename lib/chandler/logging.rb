@@ -6,7 +6,6 @@ module Chandler
     extend Forwardable
     private def_delegator :config, :logger
     private def_delegator :logger, :benchmark
-    private def_delegator :logger, :debug
     private def_delegator :logger, :error
     private def_delegator :logger, :info
   end

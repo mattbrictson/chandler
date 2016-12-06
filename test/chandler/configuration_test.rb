@@ -10,7 +10,6 @@ class Chandler::ConfigurationTest < Minitest::Test
     assert_equal("CHANGELOG.md", @config.changelog_path)
     assert_equal(".git", @config.git_path)
     assert_instance_of(Chandler::Logger, @config.logger)
-    refute(@config.logger.verbose?)
     refute(@config.dry_run?)
   end
 

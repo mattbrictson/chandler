@@ -64,10 +64,6 @@ module Chandler
             config.dry_run = d
           end
 
-          opts.on("--debug", "Enable debug output") do |d|
-            config.logger.verbose = d
-          end
-
           opts.on("-h", "--help", "Show this help message") do
             info(opts.to_s)
             exit
