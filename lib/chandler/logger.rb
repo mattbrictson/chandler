@@ -12,6 +12,7 @@ module Chandler
       @stderr = stderr
       @stdout = stdout
       @verbose = false
+      @color_enabled = nil
     end
 
     def verbose?

@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* [#23](https://github.com/mattbrictson/chandler/pull/23): Fix warnings reported when using Rake 12.0 - [@mattbrictson](https://github.com/mattbrictson)
 
 ## [0.6.0][] (2016-11-09)
 

@@ -5,14 +5,16 @@ require "chandler/logger"
 
 module Chandler
   class Configuration
-    attr_accessor :changelog_path, :git_path, :github_repository, :dry_run,
-                  :tag_prefix, :logger, :environment
+    attr_accessor :changelog_path, :git_path, :dry_run, :tag_prefix, :logger,
+                  :environment
+    attr_writer :github_repository
 
     def initialize
       @changelog_path = "CHANGELOG.md"
       @git_path = ".git"
       @logger = Chandler::Logger.new
       @dry_run = false
+      @github_repository = nil
     end
 
     def dry_run?
