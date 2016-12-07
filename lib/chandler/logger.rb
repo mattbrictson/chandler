@@ -6,17 +6,12 @@ module Chandler
   #
   class Logger
     using Chandler::Refinements::Color
-    attr_accessor :stderr, :stdout, :verbose
+    attr_accessor :stderr, :stdout
 
     def initialize(stderr: $stderr, stdout: $stdout)
       @stderr = stderr
       @stdout = stdout
-      @verbose = false
       @color_enabled = nil
-    end
-
-    def verbose?
-      verbose
     end
 
     # Logs a message to stderr. Unless otherwise specified, the message will
@@ -31,19 +26,11 @@ module Chandler
       puts(stdout, message)
     end
 
-    # Logs a message to stdout, but only if `verbose?` is true.
-    def debug(message=nil)
-      return unless verbose?
-      return puts(stdout, yield) if block_given?
-      puts(stdout, message)
-    end
-
     # Logs a message to stdout, runs the given block, and then prints the time
     # it took to run the block.
     def benchmark(message)
       start = Time.now
       print(stdout, "#{message} ")
-      debug("\n")
       result = yield
       duration = Time.now - start
       info("✔".green + format(" %0.3fs", duration).gray)
