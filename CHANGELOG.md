@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.7.0][] (2016-12-23)
+
 * [#23](https://github.com/mattbrictson/chandler/pull/23): Fix warnings reported when using Rake 12.0 - [@mattbrictson](https://github.com/mattbrictson)
 * [#21](https://github.com/mattbrictson/chandler/pull/21): Remove --debug flag since it is not used anywhere - [@mattbrictson](https://github.com/mattbrictson)
 
@@ -52,7 +55,8 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/mattbrictson/chandler/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mattbrictson/chandler/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mattbrictson/chandler/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mattbrictson/chandler/compare/v0.3.1...v0.4.0
