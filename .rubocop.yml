@@ -32,8 +32,22 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
+Style/EndOfLine:
+  EnforcedStyle: lf
+
+Style/FileName:
+  Exclude:
+    - "Dangerfile"
+
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
+
+Style/IndentHeredoc:
+  Enabled: false
+
+Style/SignalException:
+  Exclude:
+    - "Dangerfile"
 
 Style/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
