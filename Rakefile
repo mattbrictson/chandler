@@ -14,4 +14,4 @@ end
 
 RuboCop::RakeTask.new
 
-task :default => %i(test rubocop)
+task :default => %i[test rubocop]
