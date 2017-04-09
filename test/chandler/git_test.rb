@@ -20,7 +20,7 @@ class Chandler::GitTest < Minitest::Test
       git("tag -a v0.11.0 -m 0.11.0")
       git("tag -a wip -m wip")
     end
-    assert_equal(%w(v0.1.0 v0.2.0 v0.11.0), subject.version_tags)
+    assert_equal(%w[v0.1.0 v0.2.0 v0.11.0], subject.version_tags)
   end
 
   def test_version_tags_with_prefix
@@ -35,7 +35,7 @@ class Chandler::GitTest < Minitest::Test
     end
     mapper = ->(tag) { tag[/myapp-(.*)/, 1] }
     assert_equal(
-      %w(myapp-0.1.0 myapp-0.2.0 myapp-0.11.0),
+      %w[myapp-0.1.0 myapp-0.2.0 myapp-0.11.0],
       subject(mapper).version_tags
     )
   end

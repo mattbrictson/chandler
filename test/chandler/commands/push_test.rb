@@ -21,14 +21,14 @@ class Chandler::Commands::PushTest < Minitest::Test
 
   def test_changelog_is_used_to_obtain_notes
     @config.changelog.expects(:fetch).with("v1").returns("notes")
-    push = Chandler::Commands::Push.new(:tags => %w(v1), :config => @config)
+    push = Chandler::Commands::Push.new(:tags => %w[v1], :config => @config)
     push.call
   end
 
   def test_changelog_is_used_to_obtain_notes_using_tag_mapper
     @config.stubs(:tag_mapper).returns(->(_tag) { "foo" })
     @config.changelog.expects(:fetch).with("foo").returns("notes")
-    push = Chandler::Commands::Push.new(:tags => %w(v1), :config => @config)
+    push = Chandler::Commands::Push.new(:tags => %w[v1], :config => @config)
     push.call
   end
 
@@ -41,7 +41,7 @@ class Chandler::Commands::PushTest < Minitest::Test
       .expects(:create_or_update_release)
       .with(:tag => "v2", :title => "2", :description => "notes")
 
-    push = Chandler::Commands::Push.new(:tags => %w(v1 v2), :config => @config)
+    push = Chandler::Commands::Push.new(:tags => %w[v1 v2], :config => @config)
     push.call
   end
 
@@ -51,7 +51,7 @@ class Chandler::Commands::PushTest < Minitest::Test
       .expects(:create_or_update_release)
       .with(:tag => "app-1", :title => "1", :description => "notes")
 
-    push = Chandler::Commands::Push.new(:tags => %w(app-1), :config => @config)
+    push = Chandler::Commands::Push.new(:tags => %w[app-1], :config => @config)
     push.call
   end
 
@@ -64,13 +64,13 @@ class Chandler::Commands::PushTest < Minitest::Test
       .expects(:create_or_update_release)
       .with(:tag => "v1", :title => "1", :description => "  * one\n\n  * two")
 
-    push = Chandler::Commands::Push.new(:tags => %w(v1), :config => @config)
+    push = Chandler::Commands::Push.new(:tags => %w[v1], :config => @config)
     push.call
   end
 
   def test_progress_is_pretty_printed_to_stdout
     push = Chandler::Commands::Push.new(
-      :tags => %w(v1 v2.0.2 v99.1.18),
+      :tags => %w[v1 v2.0.2 v99.1.18],
       :config => @config
     )
     push.call
@@ -87,7 +87,7 @@ class Chandler::Commands::PushTest < Minitest::Test
            .raises(Chandler::Changelog::NoMatchingVersion)
 
     push = Chandler::Commands::Push.new(
-      :tags => %w(v1 v2.0.2 v99.1.18),
+      :tags => %w[v1 v2.0.2 v99.1.18],
       :config => @config
     )
     push.call

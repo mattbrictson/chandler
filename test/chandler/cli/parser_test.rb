@@ -39,14 +39,14 @@ class Chandler::CLI::ParserTest < Minitest::Test
   end
 
   def test_config_is_changed_based_on_options
-    args = %w(
+    args = %w[
       push
       --git=../test/.git
       --github=test/repo
       --changelog=../test/changes.md
       --tag-prefix=myapp-
       --dry-run
-    )
+    ]
     config = parse_arguments(*args).config
 
     assert(config.dry_run?)
