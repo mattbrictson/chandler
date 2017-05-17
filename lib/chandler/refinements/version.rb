@@ -34,8 +34,6 @@ module Chandler
 
             return lhs <=> rhs
           end
-
-          0
         end
 
         #
