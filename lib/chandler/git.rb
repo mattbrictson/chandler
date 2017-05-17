@@ -30,11 +30,12 @@ module Chandler
         version_part = tag_mapper.call(tag)
         version_part && version_part.version?
       end
-      tags.sort_by { |t| mapToVersion(t) }
+      tags.sort_by { |t| map_to_version(t) }
     end
 
-    def mapToVersion(t)
-      Chandler::Refinements::VersionFormat::Version.new(tag_mapper.call(t).version_number)
+    def map_to_version(t)
+      v_number = tag_mapper.call(t).version_number
+      Chandler::Refinements::VersionFormat::Version.new(v_number)
     end
 
     # Uses `git remote -v` to list the remotes and returns the URL of the

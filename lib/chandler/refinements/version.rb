@@ -3,7 +3,6 @@ module Chandler
     module VersionFormat
       # Version Class to be able to compare two objects for sorting versions
       class Version
-
         attr_accessor :version
 
         def initialize(version)
@@ -21,24 +20,26 @@ module Chandler
         end
 
         def compare_segments(lhsegments, rhsegments)
-          limit = get_min_size(lhsegments.size, rhsegments.size)
-          i = -1
-          while i < limit
-            i += 1
+          limit = get_max_size(lhsegments.size, rhsegments.size) -1
+          i = 0
+          result = 0
+          while i <= limit
             lhs = lhsegments[i] || 0
             rhs = rhsegments[i] || 0
-            next if lhs == rhs
-            return compare_elements(lhs, rhs)
+            result = compare_elements(lhs, rhs)
+            break if result != 0
+            i += 1
           end
+          result
         end
 
         def compare_elements(lhs, rhs)
           return -1 if String == lhs && Numeric == rhs
           return 1 if Numeric == lhs && String == rhs
-          return lhs <=> rhs
+          lhs <=> rhs
         end
 
-        def get_min_size(lhsize, rhsize)
+        def get_max_size(lhsize, rhsize)
           return (lhsize > rhsize ? lhsize : rhsize)
         end
 
