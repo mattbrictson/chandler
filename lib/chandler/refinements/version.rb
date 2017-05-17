@@ -12,6 +12,7 @@ module Chandler
 
         # Compare two versions
         def <=>(other)
+          # rubocop:disable CaseEquality
           return unless Chandler::Refinements::VersionFormat::Version === other
           return 0 if self == other
           lhsegments = segments
