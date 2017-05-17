@@ -1,4 +1,5 @@
 require "chandler/refinements/version_format"
+require "chandler/refinements/version"
 require "open3"
 
 module Chandler
@@ -29,7 +30,7 @@ module Chandler
         version_part = tag_mapper.call(tag)
         version_part && version_part.version?
       end
-      tags.sort_by { |t| Gem::Version.new(tag_mapper.call(t).version_number) }
+      tags.sort_by { |t| Chandler::Refinements::VersionFormat::Version.new(tag_mapper.call(t).version_number) }
     end
 
     # Uses `git remote -v` to list the remotes and returns the URL of the

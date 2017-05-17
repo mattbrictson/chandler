@@ -6,7 +6,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 
 ## [Unreleased][]
 
-* Your contribution here!
+* [#36](https://github.com/mattbrictson/chandler/issues/36): Releaxed Version Handling - [@PatrikSteuer](https://github.com/PatrikSteuer)
 
 ## [0.7.0][] (2016-12-23)
 
