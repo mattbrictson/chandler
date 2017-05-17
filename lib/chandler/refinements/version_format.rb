@@ -7,7 +7,7 @@ module Chandler
     module VersionFormat
       refine String do
 
-        VERSION_SEGMENT_PATTERN = "[0-9a-zA-Z]"
+        VERSION_SEGMENT_PATTERN = "[0-9a-zA-Z]".freeze
 
         # Does this string represent a version?
         #

@@ -16,13 +16,12 @@ module Chandler
           return 0 if self == other
           lhsegments = segments
           rhsegments = other.segments
-          return compare_segments(lhsegments, rhsegments)
+          compare_segments(lhsegments, rhsegments)
         end
 
         def compare_segments(lhsegments, rhsegments)
-          limit = get_max_size(lhsegments.size, rhsegments.size) -1
+          limit = get_max_size(lhsegments.size, rhsegments.size) - 1
           i = 0
-          result = 0
           while i <= limit
             lhs = lhsegments[i] || 0
             rhs = rhsegments[i] || 0
@@ -30,7 +29,7 @@ module Chandler
             break if result != 0
             i += 1
           end
-          result
+          result || 0
         end
 
         def compare_elements(lhs, rhs)
@@ -40,7 +39,7 @@ module Chandler
         end
 
         def get_max_size(lhsize, rhsize)
-          return (lhsize > rhsize ? lhsize : rhsize)
+          (lhsize > rhsize ? lhsize : rhsize)
         end
 
         #

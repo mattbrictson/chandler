@@ -16,6 +16,7 @@ class Chandler::Refinements::VersionTest < Minitest::Test
   # Test if the comparison of versions works as expected, so that version 11
   # is higher than 2
   def test_compare
+    # rubocop:disable EmptyLinesAroundClassBody
     assert_equal(0, new_version("1.0.1") <=> new_version("1.0.1"))
     assert_equal(-1, new_version("1.0.1") <=> new_version("1.0.2"))
     assert_equal(1, new_version("1.0.2") <=> new_version("1.0.1"))
