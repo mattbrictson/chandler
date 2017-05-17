@@ -3,7 +3,6 @@ require "chandler/refinements/version_format"
 require "chandler/refinements/version"
 
 class Chandler::Refinements::VersionTest < Minitest::Test
-
   # Test if split of version segments works as expected.
   #
   def test_segments
