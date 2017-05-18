@@ -45,6 +45,6 @@ class Chandler::Refinements::VersionTest < Minitest::Test
   end
 
   def compare_segments(lhsegment, rhsegment)
-    new_version("").compare_segments(lhsegment, rhsegment)
+    new_version("").compare_arrays(lhsegment, rhsegment)
   end
 end

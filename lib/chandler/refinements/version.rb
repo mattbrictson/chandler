@@ -14,10 +14,10 @@ module Chandler
           # rubocop:disable CaseEquality
           return unless Chandler::Refinements::VersionFormat::Version === other
           return 0 if self == other
-          compare_segments(segments, other.segments)
+          compare_arrays(segments, other.segments)
         end
 
-        def compare_segments(lhsegments, rhsegments)
+        def compare_arrays(lhsegments, rhsegments)
           result = 0
           lhsegments.zip(rhsegments).each do |lhs, rhs|
             result = compare_elements(lhs || 0, rhs || 0)
