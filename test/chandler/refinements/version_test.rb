@@ -32,14 +32,8 @@ class Chandler::Refinements::VersionTest < Minitest::Test
   def test_compare_elements
     assert_equal(-1, compare_elements("", 1))
     assert_equal(1, compare_elements(1, ""))
-    assert_equal(-1, compare_elements("1", "2"))
-    assert_equal(1, compare_elements(1, 2))
-  end
-
-  def test_check_limit
-    assert_equal(2, new_version("").get_max_size(1, 2))
-    assert_equal(2, new_version("").get_max_size(2, 2))
-    assert_equal(1, new_version("").get_max_size(1, 0))
+    assert_equal(-1, compare_elements("11", "2"))
+    assert_equal(1, compare_elements(11, 2))
   end
 
   def new_version(vers)
@@ -47,7 +41,7 @@ class Chandler::Refinements::VersionTest < Minitest::Test
   end
 
   def compare_elements(lhsegment, rhsegment)
-    new_version("").compare_segments(lhsegment, rhsegment)
+    new_version("").compare_elements(lhsegment, rhsegment)
   end
 
   def compare_segments(lhsegment, rhsegment)
