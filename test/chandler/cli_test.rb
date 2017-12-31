@@ -4,11 +4,13 @@ require "chandler/cli"
 class Chandler::CLITest < Minitest::Test
   include LoggerMocks
 
+  ParserStub = Struct.new(:args, :config, :usage)
+
   def setup
     @args = []
     @config = Chandler::Configuration.new
     @config.logger = new_logger
-    @parser = stub(:args => @args, :config => @config, :usage => "usage")
+    @parser = ParserStub.new(@args, @config, "usage")
     @cli = Chandler::CLI.new(:parser => @parser)
   end
 
