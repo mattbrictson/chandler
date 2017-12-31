@@ -1,11 +1,17 @@
+sudo: false
 language: ruby
+cache: bundler
 rvm:
-  - 2.1
-  - 2.2
-  - 2.3.1
-before_install: gem install bundler -v 1.13.1
+  - 2.1.10
+  - 2.2.9
+  - 2.3.6
+  - 2.5.0
+  - ruby-head
+before_install:
+  - gem update --system
+  - gem install bundler --no-document
 matrix:
   include:
-    # Run Danger only once, on 2.3.1
-    - rvm: 2.3.1
+    # Run Danger only once, on 2.4.3
+    - rvm: 2.4.3
       before_script: bundle exec danger

@@ -4,6 +4,7 @@ AllCops:
   DisplayStyleGuide: true
   Exclude:
     - "*.gemspec"
+    - "vendor/**/*"
 
 Metrics/AbcSize:
   Exclude:
