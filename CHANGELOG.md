@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* [#45](https://github.com/mattbrictson/chandler/pull/45): Submit link references together with the release notes for each version so that links are always properly rendered - [@deivid-rodriguez](https://github.com/deivid-rodriguez)
 
 ## [0.8.0][] (2019-01-26)
 

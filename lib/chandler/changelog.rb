@@ -72,10 +72,17 @@ module Chandler
         tokens = heading.gsub(/[\[\]\(\)`]/, " ").split(/[[:space:]]/)
         tokens = tokens.map(&:strip)
         version = tokens.find { |t| t.version? }
-        versions[version.version_number] = text if version
+        text_with_references = [text, link_references].join("\n\n")
+        versions[version.version_number] = text_with_references if version
       end
     end
     # rubocop:enable Style/SymbolProc
+
+    def link_references
+      @link_references ||= text.split("\n")
+                               .select { |line| line =~ /^\[.*\]: http.*/ }
+                               .join("\n")
+    end
 
     # Parses the changelog into a hash, where the keys of the hash are the
     # Markdown/rdoc headings matching the specified heading regexp, and values

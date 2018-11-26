@@ -9,6 +9,30 @@ class Chandler::ChangelogTest < Minitest::Test
     end
   end
 
+  def test_fetch_activeadmin_versions
+    changelog = new_changelog("activeadmin.md")
+
+    assert_match("only once. [#5377] by [@kjeldahl]", changelog.fetch("v1.4.2"))
+    assert_match(
+      "[#5377]: https://github.com/activeadmin/activeadmin/pull/5377",
+      changelog.fetch("v1.4.2")
+    )
+    assert_match(
+      "[@kjeldahl]: https://github.com/kjeldahl",
+      changelog.fetch("v1.4.2")
+    )
+
+    assert_match("delete. [#5583] by [@tiagotex]", changelog.fetch("v1.4.1"))
+    assert_match(
+      "[#5583]: https://github.com/activeadmin/activeadmin/pull/5583",
+      changelog.fetch("v1.4.1")
+    )
+    assert_match(
+      "[@tiagotex]: https://github.com/tiagotex",
+      changelog.fetch("v1.4.1")
+    )
+  end
+
   def test_fetch_actionview_versions
     changelog = new_changelog("actionview.md")
 
@@ -22,10 +46,10 @@ class Chandler::ChangelogTest < Minitest::Test
   def test_fetch_airbrussh_versions
     changelog = new_changelog("airbrussh.md")
 
-    assert_equal(
-      "\n* Fix `Marshal.dump` warnings by removing `deep_copy` workaround "\
+    assert_match(
+      "Fix `Marshal.dump` warnings by removing `deep_copy` workaround "\
       "that it is no longer needed for the latest SSHKit "\
-      "([#10](https://github.com/mattbrictson/airbrussh/issues/10)).\n\n",
+      "([#10](https://github.com/mattbrictson/airbrussh/issues/10)).",
       changelog.fetch("v0.4.1")
     )
     assert_match("Changes to ensure compatibility", changelog.fetch("v0.4.0"))
