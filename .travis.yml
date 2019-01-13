@@ -2,17 +2,16 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.1.10
-  - 2.2.9
-  - 2.3.6
-  - 2.4.3
-  - 2.5.0
+  - 2.3.8
+  - 2.4.5
+  - 2.5.3
+  - 2.6.0
   - ruby-head
 before_install:
   - gem update --system
-  - gem install bundler --no-document
+  - gem install bundler --conservative --no-document -v "~> 2.0"
 matrix:
   include:
-    # Run Danger only once, on 2.4.3
-    - rvm: 2.4.3
+    # Run Danger only once, on 2.6.0
+    - rvm: 2.6.0
       script: bundle exec danger

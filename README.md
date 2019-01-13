@@ -15,8 +15,8 @@ chandler scans your git repository for version tags (e.g. `v1.0.2`), parses out 
 By default, chandler makes reasonable assumptions about:
 
 - the name of your `CHANGELOG` file,
-- your project's GitHub repository URL, and 
-- the naming convention of your Git version tags. 
+- your project's GitHub repository URL, and
+- the naming convention of your Git version tags.
 
 These can all be overridden with command line options.
 
@@ -24,16 +24,16 @@ These can all be overridden with command line options.
 
 [GitHub Releases][gh-releases] are a nice UI for browsing the history of your project and downloading snapshots of each version. It is also structured data that can be queried via GitHub's API, making it a available for third-party integrations. For example, [Sibbell][] can automatically send the release notes out to interested parties whenever you publish a new version.
 
-But as a considerate developer, you also want a plain text `CHANGELOG` that travels with the code, can be edited collaboratively in pull requests, and so on. 
+But as a considerate developer, you also want a plain text `CHANGELOG` that travels with the code, can be edited collaboratively in pull requests, and so on.
 
 _But that means you need two copies of the same release notes!_ 😵
 
-**chandler takes the hassle out of maintaining these two separate formats.** 
+**chandler takes the hassle out of maintaining these two separate formats.**
 Your `CHANGELOG` is the authoritative source, and GitHub Releases are updated with a simple `chandler` command.
 
 ## Requirements
 
-* Ruby 2.1 or higher
+* Ruby 2.3 or higher
 * Your project's `CHANGELOG` must be in Markdown, with version numbers in the headings (similar to the format advocated by [keepachangelog.com](http://keepachangelog.com))
 * You must be an _owner_ or _collaborator_ of the GitHub repository to update its Releases
 
@@ -74,7 +74,7 @@ To push all `CHANGELOG` entries for all tags to GitHub, just run:
 chandler push
 ```
 
-chandler will make educated guesses as to what GitHub repository to use, the location of the `CHANGELOG`, and which tags represent releases. 
+chandler will make educated guesses as to what GitHub repository to use, the location of the `CHANGELOG`, and which tags represent releases.
 
 You can preview what will happen without actually making changes, using `--dry-run`:
 
