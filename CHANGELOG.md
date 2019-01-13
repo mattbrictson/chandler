@@ -7,6 +7,7 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* **Drop support for EOL Rubies.** Chandler now requires Ruby >= 2.3.
 
 ## [0.7.0][] (2016-12-23)
 
