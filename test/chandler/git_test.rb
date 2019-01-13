@@ -59,7 +59,7 @@ class Chandler::GitTest < Minitest::Test
       subject.origin_remote
     end
     assert_match("Failed to execute: git", error.message)
-    assert_match("Not a git repository: 'non-existent-path'", error.message)
+    assert_match(/Not a git repository: 'non-existent-path'/i, error.message)
   end
 
   private
