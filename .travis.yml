@@ -10,9 +10,8 @@ rvm:
 before_install:
   - gem update --system
   - gem install bundler --conservative --no-document -v "~> 2.0"
+  - gem install executable-hooks --conservative --no-document
 matrix:
-  allow_failures:
-    - rvm: ruby-head
   include:
     # Run Danger only once, on 2.6.0
     - rvm: 2.6.0
