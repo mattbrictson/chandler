@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.8.0][] (2019-01-26)
+
 * **Drop support for EOL Rubies.** Chandler now requires Ruby >= 2.3.
 
 ## [0.7.0][] (2016-12-23)
@@ -56,7 +59,8 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/mattbrictson/chandler/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/mattbrictson/chandler/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mattbrictson/chandler/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mattbrictson/chandler/compare/v0.4.0...v0.5.0
