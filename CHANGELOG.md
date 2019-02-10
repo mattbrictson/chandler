@@ -7,6 +7,9 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.9.0][] (2019-02-10)
+
 * [#45](https://github.com/mattbrictson/chandler/pull/45): Submit link references together with the release notes for each version so that links are always properly rendered - [@deivid-rodriguez](https://github.com/deivid-rodriguez)
 
 ## [0.8.0][] (2019-01-26)
@@ -60,7 +63,8 @@ chandler is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/chandler/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/mattbrictson/chandler/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/mattbrictson/chandler/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/mattbrictson/chandler/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mattbrictson/chandler/compare/v0.5.0...v0.6.0
