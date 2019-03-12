@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "coveralls", "~> 0.8.20"
-  spec.add_development_dependency "danger", "~> 5.11"
+  spec.add_development_dependency "danger", "~> 6.0"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "minitest", "~> 5.10"
   spec.add_development_dependency "minitest-reporters", "~> 1.1"
