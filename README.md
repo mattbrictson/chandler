@@ -6,6 +6,10 @@
 [![Code Climate](https://codeclimate.com/github/mattbrictson/chandler/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/chandler)
 [![Coverage Status](https://coveralls.io/repos/mattbrictson/chandler/badge.svg?branch=master)](https://coveralls.io/r/mattbrictson/chandler?branch=master)
 
+⚠️ **This project is no longer actively maintained.** I have found myself embracing tools like [release-drafter](https://github.com/apps/release-drafter) to keep release notes updated automatically, rather than relying on a manually edited CHANGELOG.md. If you are interested in taking over chandler development, let me know by [opening an issue](https://github.com/mattbrictson/chandler/issues/new).
+
+---
+
 **chandler syncs your CHANGELOG entries to GitHub's release notes so you don't have to enter release notes manually.** For Ruby projects, you can even add chandler to your gem's Rakefile to make this an automatic part of your release process!
 
 ### How does it work?
@@ -148,4 +152,4 @@ And yes, chandler uses itself to automatically push its own [release notes][rele
 
 ## Contributing
 
-Contributions are welcome! Read [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+This project is no longer accepting pull requests. If you are interested in taking over chandler development, let me know by [opening an issue](https://github.com/mattbrictson/chandler/issues/new).
