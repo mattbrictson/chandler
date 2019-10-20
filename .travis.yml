@@ -8,7 +8,6 @@ rvm:
   - 2.6.0
   - ruby-head
 before_install:
-  - gem update --system
   - gem install bundler --conservative --no-document -v "~> 2.0"
   - gem install executable-hooks --conservative --no-document
 matrix:
