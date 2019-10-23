@@ -6,6 +6,8 @@ module Chandler
     #
     module VersionFormat
       refine String do
+        VERSION_SEGMENT_PATTERN = "[0-9a-zA-Z]".freeze
+
         # Does this string represent a version?
         #
         # "1.0.2".version?  # => true
@@ -26,7 +28,7 @@ module Chandler
         # "".version_number       # => nil
         #
         def version_number
-          self[/^v?(#{Gem::Version::VERSION_PATTERN})$/, 1]
+          self[/^v?([0-9]+([.+-]#{VERSION_SEGMENT_PATTERN}+)*)$/, 1]
         end
 
         # The version number reformatted as a tag, by prefixing "v".
