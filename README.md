@@ -1,12 +1,6 @@
 # chandler
 
-[![Gem Version](https://badge.fury.io/rb/chandler.svg)](http://badge.fury.io/rb/chandler)
-[![Build Status](https://travis-ci.org/mattbrictson/chandler.svg?branch=master)](https://travis-ci.org/mattbrictson/chandler)
-[![Build status](https://ci.appveyor.com/api/projects/status/qmmk5ra8mom6503i/branch/master?svg=true)](https://ci.appveyor.com/project/mattbrictson/chandler/branch/master)
-[![Code Climate](https://codeclimate.com/github/mattbrictson/chandler/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/chandler)
-[![Coverage Status](https://coveralls.io/repos/mattbrictson/chandler/badge.svg?branch=master)](https://coveralls.io/r/mattbrictson/chandler?branch=master)
-
-⚠️ **This project is no longer actively maintained.** I have found myself embracing tools like [release-drafter](https://github.com/apps/release-drafter) to keep release notes updated automatically, rather than relying on a manually edited CHANGELOG.md. If you are interested in taking over chandler development, let me know by [opening an issue](https://github.com/mattbrictson/chandler/issues/new).
+⚠️ **This project is no longer actively maintained.** I have found myself embracing tools like [release-drafter](https://github.com/apps/release-drafter) to keep release notes updated automatically, rather than relying on a manually edited CHANGELOG.md.
 
 ---
 
@@ -152,4 +146,4 @@ And yes, chandler uses itself to automatically push its own [release notes][rele
 
 ## Contributing
 
-This project is no longer accepting pull requests. If you are interested in taking over chandler development, let me know by [opening an issue](https://github.com/mattbrictson/chandler/issues/new).
+This project is no longer accepting pull requests.
